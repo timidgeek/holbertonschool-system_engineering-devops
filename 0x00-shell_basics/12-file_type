@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l /tmp/iamafile
+ls -l touch /tmp/iamafile
