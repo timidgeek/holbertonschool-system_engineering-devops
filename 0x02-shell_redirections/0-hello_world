@@ -1,2 +1,2 @@
 #!/bin/bash
-cat Hello, World
+cat 0-hello_world Hello, World
