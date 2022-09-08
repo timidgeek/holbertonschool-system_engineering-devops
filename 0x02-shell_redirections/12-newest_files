@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -Rtn 10	
+ls -Rtn 10 .	
