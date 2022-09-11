@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {a..z}{a..z} | tr -d "oo" | sort | ls -ln 64
+echo {a..z}{a..z} | tr -d "oo" | sort | ls -l
