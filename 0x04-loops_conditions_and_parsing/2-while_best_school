@@ -1,4 +1,4 @@
-#!/user/bin/env bash
+#!/usr/bin/env bash
 # Displaying a script ten times using "while"
 i=0
 while ((i=0; i<10; i++))
