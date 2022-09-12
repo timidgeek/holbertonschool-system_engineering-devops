@@ -3,5 +3,5 @@
 FILES="/holbertonschool-system_engineering-devops/0x04-loops_conditions_and_parsing*"
 for FILE in $FILES;
 do
-	echo "$FILE" ;
+	echo "$FILE" | tr -d "*-" ;
 done
