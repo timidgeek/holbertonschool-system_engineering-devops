@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Listing files using "for".
-FILES="/holbertonschool-system_engineering-devops/0x04-loops_conditions_and_parsing*"
-for FILE in $FILES;
+for FILE in *
 do
-	echo "$FILE" | tr -d "*-" ;
+	echo $FILE| cut -d '-' -f2-	
+#echo "$(tr -d '*-' < $FILE)" ;
 done
