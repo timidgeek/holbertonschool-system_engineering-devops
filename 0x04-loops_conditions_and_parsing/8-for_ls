@@ -2,5 +2,5 @@
 # Listing files using "for".
 for FILE in *
 do
-	echo $FILE | cut -d '-' -f2
+	echo "$FILE" | cut -d '-' -f2-
 done
