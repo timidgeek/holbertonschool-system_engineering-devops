@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "Displaying a script ten times."
+# Displaying a script ten times.
 i=0
 for ((i=0; i<10; i++))
 do
