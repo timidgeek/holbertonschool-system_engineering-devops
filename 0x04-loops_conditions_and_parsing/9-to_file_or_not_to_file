@@ -14,4 +14,6 @@ if [ -e $school ]; then
 	else
 		echo ""
 	fi
+else 
+	echo "$school does not exist"
 fi
