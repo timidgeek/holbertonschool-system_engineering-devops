@@ -6,9 +6,9 @@ do
 	i=$((i++))
 	if [[ $((i % 5)) -eq 0 && $((i % 3)) -eq 0 ]]; then
 		echo "Fizzbuzz"
-	elif $((i % 3)) -eq 0; then 
+	elif [[ $((i % 3)) -eq 0 ]]; then 
 		echo "Fizz"
-	elif $((i % 5)) -eq 0; then
+	elif [[ $((i % 5)) -eq 0 ]]; then
 		echo "Buzz"
 	else
 		echo "$i"
