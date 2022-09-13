@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 # Displaying numbers with a specific pattern. 
-i-1
-while [ $i -le 100 ]
+i=1
+for i in {1..100}; 
 do
-case $i in
-	"3$i, 5$i")
+	i=$((i++))
+	if (( i % 15 == 0 )); then
 		echo "Fizzbuzz"
-	"3$i")
+	elif (( i % 3 == 0 )); then 
 		echo "Fizz"
-	"5$i")
+	elif (( i % 5 == 0 )); then
 		echo "Buzz"
-	*)
+	else
 		echo "$i"
-esac
-((i++))
+fi
 done
