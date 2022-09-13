@@ -4,7 +4,7 @@ i=1
 for i in {1..100}; 
 do
 	i=$((i++))
-	if [[ $((i % 5)) -eq 0 && $((i % 3)) -eq 0 ]]; then
+	if [[ $((i % 5)) -eq 0 ]] && [[ $((i % 3)) -eq 0 ]]; then
 		echo "Fizzbuzz"
 	elif [[ $((i % 3)) -eq 0 ]]; then 
 		echo "Fizz"
