@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Displaying numbers with a specific pattern. 
+i-1
+while [ $i -le 100 ]
+do
+case $i in
+	"3$i, 5$i")
+		echo "Fizzbuzz"
+	"3$i")
+		echo "Fizz"
+	"5$i")
+		echo "Buzz"
+	*)
+		echo "$i"
+esac
+((i++))
+done
