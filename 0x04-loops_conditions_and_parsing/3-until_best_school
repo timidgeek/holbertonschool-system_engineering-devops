@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Using until to display a script ten times.
+i=0
+until [ $i -eq 10 ]
+do
+	echo "Best School"
+	((i++))
+done
