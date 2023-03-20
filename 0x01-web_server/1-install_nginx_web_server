@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 # Install nginx on remote web-01 server
 
-apt-get update
-apt-get upgrade
-apt-get install -y nginx
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Hello World!" > /etc/nginx/html/index.html
-printf %s "server {
-    listen  80 default_server;
-    listen  [::]:80 default_server;
-    root    /etc/nginx/html;
-    index   index.html;
-}" > /etc/nginx/sites-available/default
-service nginx restart
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+sudo echo 'Hello World!' | sudo tee /var/www/html/index.html
+
+sed -i 's/listen\s*80;/listen 80 defualt_server;/g' /etc/nginx/sites-available/default
+sed -i 's|#*root /var/www/html;|root /var/www/html;|g' /etc/nginx/sites-available/default
+sed -i 's|#*index index.html;|index index.html;|g' /etc/nginx/sites-available/default
+
+sudo service nginx restart
