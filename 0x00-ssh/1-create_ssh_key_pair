@@ -2,4 +2,4 @@
 # Creates an RSA key pair
 # named school pass betty
 
-ssh-keygen -b 4096 -N betty -f school
+ssh-keygen -b 4096 -N 'betty' -f school
