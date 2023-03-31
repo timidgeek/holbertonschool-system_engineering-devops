@@ -9,11 +9,10 @@ import sys
 
 def get_employee_todo_progress(employee_id):
     tasks_done, total_tasks = 0, 0
+    base_url = "https://jsonplaceholder.typicode.com"
 
     # creating response objects for employee
-    employee_response = \
-        requests.get(f"https://jsonplaceholder.typicode.com/\
-            users/{employee_id}")
+    employee_response = requests.get(f"{base_url}/users/{employee_id}")
     # creating dictionary objects for response objects
     employee_info = employee_response.json()
 
@@ -24,14 +23,12 @@ def get_employee_todo_progress(employee_id):
 
     # creating response objects for employee & their todo list
     todo_response = \
-        requests.get(f"https://jsonplaceholder.typicode.com/\
-            users/{employee_id}/todos")
+        requests.get(f"{base_url}/users/{employee_id}/todos")
     # creating dictionary objects for response objects
     todo_list = todo_response.json()
 
-
     # name variable placeholder
-    employee_name = employee_info['name']
+    emp_nm = employee_info['name']
 
     # task incrementation
     for task in todo_list:
@@ -39,8 +36,7 @@ def get_employee_todo_progress(employee_id):
         if task['completed']:
             tasks_done += 1
 
-    print(f"Employee {employee_name} \
-        is done with tasks({tasks_done}/{total_tasks}):")
+    print(f"Employee {emp_nm} is done with tasks({tasks_done}/{total_tasks}):")
 
     for task in todo_list:
         if task['completed']:
