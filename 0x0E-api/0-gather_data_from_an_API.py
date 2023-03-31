@@ -37,4 +37,3 @@ if __name__ == '__main__':
     for task in todo_list:
         if task['completed']:
             print(f"\t {task['title']}")
-
