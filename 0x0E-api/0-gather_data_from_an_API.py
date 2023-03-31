@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""Write a Python script that, using given fake REST API,
-    for a given employee ID, returns information about
-    his/her TODO list progress."""
+"""write a python script that, using given fake rest api,
+    for a given employee id, returns information about
+    his/her todo list progress."""
 import json
 import requests
-import sys
+from sys import argv
 
 
-def get_employee_todo_progress(employee_id):
+if __name__ == '__main__':
+    employee_id = argv[1]
     tasks_done, total_tasks = 0, 0
     base_url = "https://jsonplaceholder.typicode.com"
 
@@ -16,11 +17,6 @@ def get_employee_todo_progress(employee_id):
     # creating dictionary objects for response objects
     employee_info = employee_response.json()
 
-    # does name exist?
-    if 'name' not in employee_info:
-        print("Invalid employee ID")
-        return
-
     # creating response objects for employee & their todo list
     todo_response = \
         requests.get(f"{base_url}/users/{employee_id}/todos")
@@ -28,7 +24,7 @@ def get_employee_todo_progress(employee_id):
     todo_list = todo_response.json()
 
     # name variable placeholder
-    emp_nm = employee_info['name']
+    name = employee_info['name']
 
     # task incrementation
     for task in todo_list:
@@ -36,13 +32,9 @@ def get_employee_todo_progress(employee_id):
         if task['completed']:
             tasks_done += 1
 
-    print(f"Employee {emp_nm} is done with tasks({tasks_done}/{total_tasks}):")
+    print(f"Employee {name} is done with tasks({tasks_done}/{total_tasks}):")
 
     for task in todo_list:
         if task['completed']:
-            print(f"\t{task['title']}")
+            print(f"\t {task['title']}")
 
-
-if __name__ == "__main__":
-    employee_id = sys.argv[1]
-    get_employee_todo_progress(employee_id)
