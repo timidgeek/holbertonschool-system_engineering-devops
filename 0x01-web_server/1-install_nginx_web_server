@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Install nginx on remote web-01 server
+
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+sudo echo 'Hello World!' | sudo tee /var/www/html/index.html
+
+sudo sed -i 's/listen\s*80;/listen 80 defualt_server;/g' /etc/nginx/sites-available/default
+sudo sed -i 's|#*root /var/www/html;|root /var/www/html;|g' /etc/nginx/sites-available/default
+sudo sed -i 's|#*index index.html;|index index.html;|g' /etc/nginx/sites-available/default
+
+sudo service nginx restart

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Configure your Nginx server so that /redirect_me is redirecting to another page
+
+# Update package list and install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+sudo echo 'Hello World!' | sudo tee /var/www/html/index.html
+
+# Create backup of default configuration file
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_backup
+
+# Modify configuration file to listen on port 80 and set document root to /var/www/html
+sudo sed -i 's/listen\s*80;/listen 80 defualt_server;/g' /etc/nginx/sites-available/default
+sudo sed -i 's|#*root /var/www/html;|root /var/www/html;|g' /etc/nginx/sites-available/default
+sudo sed -i 's|#*index index.html;|index index.html;|g' /etc/nginx/sites-available/default
+
+# Add redirect rule to configuration file
+firstLocation="^\tlocation / {"
+secondLocation="\tlocation /redirect_me {\n\t\treturn 301 \@scheme://youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n\n\tlocation / {"
+
+sudo sed -i "s|$firstLocation|$secondLocation|g" /etc/nginx/sites-available/default
+
+sudo service nginx restart
+sudo service nginx reload
