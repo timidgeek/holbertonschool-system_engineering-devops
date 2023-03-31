@@ -18,8 +18,7 @@ if __name__ == '__main__':
     employee_info = employee_response.json()
 
     # creating response objects for employee & their todo list
-    todo_response = \
-        requests.get(f"{base_url}/users/{employee_id}/todos")
+    todo_response = requests.get(f"{base_url}/users/{employee_id}/todos")
     # creating dictionary objects for response objects
     todo_list = todo_response.json()
 
