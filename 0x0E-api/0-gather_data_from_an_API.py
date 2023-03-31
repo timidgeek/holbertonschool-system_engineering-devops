@@ -13,12 +13,14 @@ if __name__ == '__main__':
     base_url = "https://jsonplaceholder.typicode.com"
 
     # creating response objects for employee
-    employee_response = requests.get(f"{base_url}/users/{employee_id}")
+    employee_response = requests.get("{}/users/{}"
+                                     .format(base_url, employee_id))
     # creating dictionary objects for response objects
     employee_info = employee_response.json()
 
     # creating response objects for employee & their todo list
-    todo_response = requests.get(f"{base_url}/users/{employee_id}/todos")
+    todo_response = requests.get("{}/users/{}/todos"
+                                 .format(base_url, employee_id))
     # creating dictionary objects for response objects
     todo_list = todo_response.json()
 
@@ -31,8 +33,9 @@ if __name__ == '__main__':
         if task['completed']:
             tasks_done += 1
 
-    print(f"Employee {name} is done with tasks({tasks_done}/{total_tasks}):")
+    print("Employee {} is done with tasks({}/{}):"
+          .format(name, tasks_done, total_tasks))
 
     for task in todo_list:
         if task['completed']:
-            print(f"\t {task['title']}")
+            print("\t {}".format(task['title']))
